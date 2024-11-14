@@ -43,6 +43,7 @@
 #include <linux/version.h>
 #include <linux/delay.h>
 #include <linux/uaccess.h>
+#include <linux/fs.h>
 #include "t241-clink.h"
 #include "t241-clink-hw.h"
 #include "t241-clink-ioctl.h"
