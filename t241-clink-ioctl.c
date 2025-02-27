@@ -434,8 +434,6 @@ static int minion_send_dlcmd(struct tegra_nvlink_dev *tdev, u32 socket_id,
 		goto fail;
 	}
 
-	pr_debug("MINION dlcmd(cmd %d, socket %d, link_id %d) completed!",
-		cmd, socket_id, link_id);
 	goto success;
 
 fail:
@@ -483,10 +481,6 @@ static int minion_send_dlstat(struct tegra_nvlink_dev *tdev, u32 socket_id,
 	/* READ DL STATUS DATA */
 	*dlstat_data = nvlw_minion_readl(tdev, socket_id, nvlw_id,
 					MINION_NVLINK_DL_STATDATA(link));
-
-	pr_debug("MINION dlstat(id %d, socket %d, link_id %d) completed",
-		dlstat_id, socket_id, link_id);
-	pr_debug("dl_statdata=0x%x", *dlstat_data);
 
 	return err;
 }
@@ -1437,8 +1431,6 @@ static long t241_nvlink_dev_ioctl(struct file *file, unsigned int cmd,
 		}
 	}
 
-	dev_info(tdev->dev, "The %s IOCTL completed successfully!",
-		ioctls[ioctl_num].name);
 	goto cleanup;
 
 fail:
@@ -1554,7 +1546,6 @@ static int t241_nvlink_dev_probe(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, tdev);
 
-	pr_debug("Probe successful!");
 	goto success;
 fail:
 	pr_err("Probe failed! ret=%d", ret);
